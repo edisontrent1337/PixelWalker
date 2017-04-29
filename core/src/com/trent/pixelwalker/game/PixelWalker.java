@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.trent.pixelwalker.controller.sensors.SensorAdapter;
+import com.trent.pixelwalker.screens.GameScreen;
 import com.trent.pixelwalker.utils.SensorType;
 import com.trent.pixelwalker.utils.Utils;
 
@@ -34,7 +35,6 @@ public class PixelWalker extends Game {
     private GameState gameState = GameState.PAUSED;
 
 	SpriteBatch batch;
-	Texture img;
 
 
     Random r = new Random();
@@ -62,9 +62,10 @@ public class PixelWalker extends Game {
             currentSensorValues.put(type, new float[type.args]);
         }
 
+        setScreen(new GameScreen(this));
 	}
 
-	@Override
+	/*@Override
 	public void render () {
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -72,7 +73,8 @@ public class PixelWalker extends Game {
         shapeRenderer.begin();
         shapeRenderer.set(ShapeRenderer.ShapeType.Filled);
 
-
+        if(sensorAdapter.getData().get(SensorType.STEP_COUNTER)!=null)
+            Utils.log(TAG, sensorAdapter.getData().get(SensorType.STEP_COUNTER)[0]);
 
         int rows = (int) Math.floor(steps / WIDTH);
         int x = 0;
@@ -88,44 +90,13 @@ public class PixelWalker extends Game {
             }
 
         shapeRenderer.end();
-	}
+	}*/
 	
 	@Override
 	public void dispose () {
 		batch.dispose();
 	}
 
-	public void updateSensorValues(SensorType type, float[] values) {
-
-        if(type.equals(SensorType.STEP_COUNTER)) {
-            float currentSteps = currentSensorValues.get(SensorType.STEP_COUNTER)[0];
-            float newSteps = values[0];
-
-
-
-            // Calculating delta between old and new values
-            float deltaSteps = newSteps - currentSteps;
-
-            if (deltaSteps > 0) {
-                colors.put(steps,new Color(
-                        r.nextFloat(),
-                        r.nextFloat(),
-                        r.nextFloat(),
-                        1f
-                ));
-                steps++;
-
-            }
-
-            currentSensorValues.put(SensorType.STEP_COUNTER, new float[]{newSteps});
-
-            Utils.log("DELTA STEPS:", deltaSteps);
-            Utils.log("OLD HARDWARE STEPS: ", currentSteps);
-            Utils.log("NEW HARDWARE STEPS: ", newSteps);
-            Utils.log("STEPS COUNTED: ", steps);
-            Utils.log("SAVED DATA IN MAP: ", currentSensorValues.get(SensorType.STEP_COUNTER)[0]);
-        }
-    }
 
     public void setGameState(GameState state) {
         this.gameState = state;

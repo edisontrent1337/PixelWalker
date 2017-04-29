@@ -43,12 +43,17 @@ public class AndroidLauncher extends AndroidApplication implements SensorEventLi
             public HashMap<SensorType, float[]> getData() {
                 return sensorValues;
             }
+
+            @Override
+            public float getSteps() {
+                if(sensorValues.get(SensorType.STEP_COUNTER) != null)
+                    return sensorValues.get(SensorType.STEP_COUNTER)[0];
+                else
+                    return -1;
+            }
         };
 
         this.game = new PixelWalker(sensorAdapter);
-
-
-
 
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
 
@@ -66,7 +71,6 @@ public class AndroidLauncher extends AndroidApplication implements SensorEventLi
 
             if(s != null) {
                 sensorManager.registerListener(this, s, SensorManager.SENSOR_DELAY_GAME);
-                Toast.makeText(this, "Registered listener for" + s.toString(), Toast.LENGTH_LONG).show();
             }
             else
                 Toast.makeText(this, Integer.toString(s.getType()) + " sensor was not found.", Toast.LENGTH_SHORT).show();
@@ -89,17 +93,17 @@ public class AndroidLauncher extends AndroidApplication implements SensorEventLi
             switch (type) {
                 case Sensor.TYPE_ACCELEROMETER:
                     sensorValues.put(SensorType.ACCELEROMETER, values);
-                    game.updateSensorValues(SensorType.ACCELEROMETER, values);
+                   // game.updateSensorValues(SensorType.ACCELEROMETER, values);
 
                     break;
                 case Sensor.TYPE_STEP_COUNTER:
-                    sensorValues.put(SensorType.STEP_COUNTER, event.values);
-                    game.updateSensorValues(SensorType.STEP_COUNTER, values);
+                    sensorValues.put(SensorType.STEP_COUNTER, values);
+                    // game.updateSensorValues(SensorType.STEP_COUNTER, values);
 
                     break;
                 case Sensor.TYPE_STEP_DETECTOR:
-                    sensorValues.put(SensorType.STEP_DETECTOR, event.values);
-                    game.updateSensorValues(SensorType.STEP_DETECTOR, values);
+                    sensorValues.put(SensorType.STEP_DETECTOR, values);
+                    // game.updateSensorValues(SensorType.STEP_DETECTOR, values);
 
                     break;
                 default:

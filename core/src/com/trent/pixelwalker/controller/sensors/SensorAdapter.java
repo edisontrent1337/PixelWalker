@@ -12,4 +12,5 @@ public interface SensorAdapter {
 
     void onSensorChanged();
     HashMap<SensorType, float[]> getData();
+    float getSteps();
 }

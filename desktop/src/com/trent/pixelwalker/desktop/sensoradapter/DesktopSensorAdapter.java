@@ -19,4 +19,9 @@ public class DesktopSensorAdapter implements SensorAdapter {
     public HashMap<SensorType, float[]> getData() {
         return null;
     }
+
+    @Override
+    public float getSteps() {
+        return 0;
+    }
 }
