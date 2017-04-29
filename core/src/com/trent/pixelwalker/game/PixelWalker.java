@@ -37,7 +37,6 @@ public class PixelWalker extends Game {
 	public void create () {
 		batch = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
-		img = new Texture("badlogic.jpg");
 
         for(SensorType type : SensorType.values()) {
             currentSensorValues.put(type, new float[type.args]);
@@ -68,18 +67,11 @@ public class PixelWalker extends Game {
             }
 
         shapeRenderer.end();
-		/*batch.begin();
-		batch.draw(img, 0, 0);
-		batch.end();*/
-
-
-
 	}
 	
 	@Override
 	public void dispose () {
 		batch.dispose();
-		img.dispose();
 	}
 
 	public void updateSensorValues(SensorType type, float[] values) {
