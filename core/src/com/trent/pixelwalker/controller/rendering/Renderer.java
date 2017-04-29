@@ -26,7 +26,7 @@ public abstract class Renderer {
 
     }
 
-    public abstract void render();
+    public abstract void render(float delta);
 
     public abstract void resize(int w, int h);
 

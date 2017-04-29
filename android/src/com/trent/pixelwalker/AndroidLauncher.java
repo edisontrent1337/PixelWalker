@@ -68,7 +68,6 @@ public class AndroidLauncher extends AndroidApplication implements SensorEventLi
         sensors.add(accelerometer);
 
         for(Sensor s : sensors) {
-
             if(s != null) {
                 sensorManager.registerListener(this, s, SensorManager.SENSOR_DELAY_GAME);
             }
@@ -76,8 +75,6 @@ public class AndroidLauncher extends AndroidApplication implements SensorEventLi
                 Toast.makeText(this, Integer.toString(s.getType()) + " sensor was not found.", Toast.LENGTH_SHORT).show();
 
         }
-
-
 
         initialize(game, config);
 
@@ -93,18 +90,13 @@ public class AndroidLauncher extends AndroidApplication implements SensorEventLi
             switch (type) {
                 case Sensor.TYPE_ACCELEROMETER:
                     sensorValues.put(SensorType.ACCELEROMETER, values);
-                   // game.updateSensorValues(SensorType.ACCELEROMETER, values);
-
                     break;
                 case Sensor.TYPE_STEP_COUNTER:
                     sensorValues.put(SensorType.STEP_COUNTER, values);
-                    // game.updateSensorValues(SensorType.STEP_COUNTER, values);
 
                     break;
                 case Sensor.TYPE_STEP_DETECTOR:
                     sensorValues.put(SensorType.STEP_DETECTOR, values);
-                    // game.updateSensorValues(SensorType.STEP_DETECTOR, values);
-
                     break;
                 default:
                     break;

@@ -19,7 +19,7 @@ public class HUDRenderer extends Renderer{
     }
 
     @Override
-    public void render() {
+    public void render(float delta) {
 
     }
 

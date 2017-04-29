@@ -46,26 +46,23 @@ public class WorldController {
     // ---------------------------------------------------------------------------------------------
     // METHODS & FUNCTIONS
     // ---------------------------------------------------------------------------------------------
-    public void update() {
+    public void update(float delta) {
         if(sensorAdapter.getData() != null) {
             float currentSteps = sensorData.get(SensorType.STEP_COUNTER)[0];
             float newSteps = sensorAdapter.getSteps();
             if(newSteps < 0) {
-                Utils.log(TAG, "Error. Sensor adapter data was negative: " + newSteps);
+                //Utils.log(TAG, "Error. Sensor adapter data was negative: " + newSteps);
             }
             float deltaSteps = newSteps - currentSteps;
-
             if(deltaSteps > 0) {
                 steps++;
             }
 
             sensorData.put(SensorType.STEP_COUNTER, new float[] {newSteps});
-
-            Utils.log(TAG, "Counted steps are: " + steps);
-
+            // Utils.log(TAG, "Counted steps are: " + steps);
         }
         else {
-            Utils.log(TAG, "Data from sensor adapter was not present.");
+            Utils.log(TAG, "Data from sensor adapter was not present. (was null) ");
         }
     }
 

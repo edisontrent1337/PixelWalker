@@ -33,35 +33,11 @@ public class PixelWalker extends Game {
     }
 
     private GameState gameState = GameState.PAUSED;
-
-	SpriteBatch batch;
-
-
-    Random r = new Random();
-
-    ShapeRenderer shapeRenderer;
-    HashMap<Integer, Color> colors = new HashMap<Integer, Color>();
-
-    int steps = 0;
     public static final String TAG = "PIXELWALKER_MAIN";
 
-    public static final int WIDTH = 1920 / 128;
-    public static final int HEIGHT = 1080 / 128;
-
-
-    //TESTING
-    private HashMap<SensorType, float[]> currentSensorValues = new HashMap<SensorType, float[]>();
 
 	@Override
 	public void create () {
-
-		batch = new SpriteBatch();
-        shapeRenderer = new ShapeRenderer();
-
-        for(SensorType type : SensorType.values()) {
-            currentSensorValues.put(type, new float[type.args]);
-        }
-
         setScreen(new GameScreen(this));
 	}
 
@@ -94,7 +70,7 @@ public class PixelWalker extends Game {
 	
 	@Override
 	public void dispose () {
-		batch.dispose();
+
 	}
 
 
