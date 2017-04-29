@@ -8,7 +8,9 @@ import com.trent.pixelwalker.game.PixelWalker;
 
 public class RenderingEngine extends Renderer{
 
-    // CANVAS DIMENSIONS
+    // ---------------------------------------------------------------------------------------------
+    // MEMBERS & FIELDS
+    // ---------------------------------------------------------------------------------------------
     static final float CAMERA_WIDTH = 32f;
     static final float CAMERA_HEIGHT = 18f;
 
@@ -23,8 +25,9 @@ public class RenderingEngine extends Renderer{
 
     }
 
-
-
+    // ---------------------------------------------------------------------------------------------
+    // METHODS & FIELDS
+    // ---------------------------------------------------------------------------------------------
     private void moveCamera(float x, float y) {
 
     }

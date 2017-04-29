@@ -9,6 +9,9 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Pixel {
 
+    // ---------------------------------------------------------------------------------------------
+    // MEMBERS & FIELDS
+    // ---------------------------------------------------------------------------------------------
     public static final float DEFAULT_POWER = 1.0f;
     public static final float WIDTH = 1.0f;
     public static final float HEIGHT = 1.0f;
@@ -28,9 +31,24 @@ public class Pixel {
     }
 
 
+    // ---------------------------------------------------------------------------------------------
+    // METHODS & FUNCTIONS
+    // ---------------------------------------------------------------------------------------------
     public void update(float delta) {
         time += delta;
     }
 
 
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public void setPosition(Vector2 position) {
+        this.position = position;
+    }
+
+    public void setPosition(float x, float y) {
+        this.position.x = x;
+        this.position.y = y;
+    }
 }

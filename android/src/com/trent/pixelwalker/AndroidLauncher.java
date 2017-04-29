@@ -6,12 +6,13 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
+import com.trent.pixelwalker.controller.sensors.SensorAdapter;
 import com.trent.pixelwalker.game.PixelWalker;
+import com.trent.pixelwalker.sensoradapter.AndroidSensorAdapter;
 import com.trent.pixelwalker.utils.SensorType;
 
 import java.util.HashMap;
@@ -36,7 +37,16 @@ public class AndroidLauncher extends AndroidApplication implements SensorEventLi
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-        this.game = new PixelWalker();
+
+        SensorAdapter sensorAdapter = new AndroidSensorAdapter() {
+            @Override
+            public HashMap<SensorType, float[]> getData() {
+                return sensorValues;
+            }
+        };
+
+        this.game = new PixelWalker(sensorAdapter);
+
 
 
 

@@ -2,11 +2,13 @@ package com.trent.pixelwalker.game;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.trent.pixelwalker.controller.sensors.SensorAdapter;
 import com.trent.pixelwalker.utils.SensorType;
 import com.trent.pixelwalker.utils.Utils;
 
@@ -14,6 +16,23 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class PixelWalker extends Game {
+
+    private SensorAdapter sensorAdapter;
+
+    public PixelWalker(SensorAdapter sensorAdapter) {
+        this.sensorAdapter = sensorAdapter;
+    }
+
+
+    public enum GameState {
+        SPLASH,
+        MENU,
+        PAUSED,
+        GAME;
+    }
+
+    private GameState gameState = GameState.PAUSED;
+
 	SpriteBatch batch;
 	Texture img;
 
@@ -35,6 +54,7 @@ public class PixelWalker extends Game {
 
 	@Override
 	public void create () {
+
 		batch = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
 
@@ -51,6 +71,7 @@ public class PixelWalker extends Game {
         shapeRenderer.setAutoShapeType(true);
         shapeRenderer.begin();
         shapeRenderer.set(ShapeRenderer.ShapeType.Filled);
+
 
 
         int rows = (int) Math.floor(steps / WIDTH);
@@ -104,6 +125,14 @@ public class PixelWalker extends Game {
             Utils.log("STEPS COUNTED: ", steps);
             Utils.log("SAVED DATA IN MAP: ", currentSensorValues.get(SensorType.STEP_COUNTER)[0]);
         }
+    }
+
+    public void setGameState(GameState state) {
+        this.gameState = state;
+    }
+
+    public SensorAdapter getSensorAdapter() {
+        return sensorAdapter;
     }
 
 }

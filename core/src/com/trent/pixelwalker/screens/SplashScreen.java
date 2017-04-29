@@ -1,12 +1,13 @@
 package com.trent.pixelwalker.screens;
 
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 
 /**
  * Created by Sinthu on 4/29/2017.
  */
 
-public class SplashScreen implements Screen {
+public class SplashScreen implements Screen, InputProcessor {
     @Override
     public void show() {
 
@@ -40,5 +41,45 @@ public class SplashScreen implements Screen {
     @Override
     public void dispose() {
 
+    }
+
+    @Override
+    public boolean keyDown(int keycode) {
+        return false;
+    }
+
+    @Override
+    public boolean keyUp(int keycode) {
+        return false;
+    }
+
+    @Override
+    public boolean keyTyped(char character) {
+        return false;
+    }
+
+    @Override
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        return false;
+    }
+
+    @Override
+    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+        return false;
+    }
+
+    @Override
+    public boolean touchDragged(int screenX, int screenY, int pointer) {
+        return false;
+    }
+
+    @Override
+    public boolean mouseMoved(int screenX, int screenY) {
+        return false;
+    }
+
+    @Override
+    public boolean scrolled(int amount) {
+        return false;
     }
 }

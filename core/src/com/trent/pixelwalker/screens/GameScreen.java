@@ -3,6 +3,8 @@ package com.trent.pixelwalker.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.physics.box2d.World;
+import com.trent.pixelwalker.controller.WorldController;
 import com.trent.pixelwalker.controller.rendering.RenderingEngine;
 import com.trent.pixelwalker.game.PixelWalker;
 
@@ -14,14 +16,14 @@ public class GameScreen implements Screen, InputProcessor {
 
     private PixelWalker game;
     private RenderingEngine renderingEngine;
+    private WorldController worldController;
     // ---------------------------------------------------------------------------------------------
     // CONSTRUCTOR
     // ---------------------------------------------------------------------------------------------
     public GameScreen (PixelWalker game) {
         this.game = game;
+        this.worldController = new WorldController(game);
     }
-
-
 
 
     @Override
@@ -32,7 +34,8 @@ public class GameScreen implements Screen, InputProcessor {
 
     @Override
     public void render(float delta) {
-
+        worldController.update();
+        renderingEngine.render();
     }
 
     @Override
@@ -59,8 +62,6 @@ public class GameScreen implements Screen, InputProcessor {
     public void dispose() {
 
     }
-
-
 
 
     @Override
