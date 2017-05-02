@@ -39,7 +39,7 @@ public class GameScreen implements Screen, GestureDetector.GestureListener {
     @Override
     public void render(float delta) {
         worldController.update(delta);
-        renderingEngine.render(delta);
+        renderingEngine.render();
     }
 
     @Override
