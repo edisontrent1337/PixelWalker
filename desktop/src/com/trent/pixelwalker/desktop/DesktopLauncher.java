@@ -9,8 +9,8 @@ import com.trent.pixelwalker.game.PixelWalker;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		config.width = 1280;
-		config.height = 720;
+		config.width = 608;
+		config.height = 1080;
         SensorAdapter sensorAdapter = new DesktopSensorAdapter();
 		new LwjglApplication(new PixelWalker(sensorAdapter), config);
 	}

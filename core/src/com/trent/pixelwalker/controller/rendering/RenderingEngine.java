@@ -27,7 +27,6 @@ public class RenderingEngine extends Renderer{
     private PixelWalker game;
     private WorldController worldController;
     private HUDRenderer hudRenderer;
-    private float worldTime = 0f;
     private static final String TAG = RenderingEngine.class.getSimpleName();
 
     // ---------------------------------------------------------------------------------------------
@@ -44,6 +43,7 @@ public class RenderingEngine extends Renderer{
         camera.zoom = START_ZOOM;
         camera.position.set(CAMERA_WIDTH / 2f, CAMERA_HEIGHT / 2f, 0);
         camera.update();
+        Utils.log(TAG, "CAMERA VIEWPORT WxH: " + camera.viewportWidth + " x " + camera.viewportHeight);
 
         loadTexturesAndFonts();
         // TODO: If more renderers are needed, save them in a hash set and call loadTexturesAndFonts

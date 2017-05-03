@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
-import java.util.HashSet;
+import java.util.EnumMap;
 
 /**
  * Created by Sinthu on 18.08.2016.
@@ -18,7 +18,14 @@ public abstract class Renderer {
     protected ShapeRenderer shapeRenderer;
     protected FreeTypeFontGenerator fontGenerator;
 
-    protected HashSet<BitmapFont> fonts;
+    protected enum FontType {
+        MUNRO_SMALL,
+        MUNRO_REGULAR,
+        ARIAL,
+        ROBOTO;
+    }
+
+    protected EnumMap<FontType, BitmapFont> fonts;
 
     // ---------------------------------------------------------------------------------------------
     // CONSTRUCTOR
@@ -27,7 +34,7 @@ public abstract class Renderer {
         this.camera = new OrthographicCamera(viewPortWidth, viewPortHeight);
         this.spriteBatch = new SpriteBatch();
         this.shapeRenderer = new ShapeRenderer();
-        this.fonts = new HashSet<BitmapFont>();
+        this.fonts = new EnumMap<FontType, BitmapFont>(FontType.class);
     }
 
     public abstract void loadTexturesAndFonts();

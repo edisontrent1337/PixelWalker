@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.trent.pixelwalker.controller.sensors.SensorAdapter;
 import com.trent.pixelwalker.game.PixelWalker;
 import com.trent.pixelwalker.models.Pixel;
+import com.trent.pixelwalker.models.Player;
 import com.trent.pixelwalker.utils.SensorType;
 import com.trent.pixelwalker.utils.Utils;
 
@@ -22,7 +23,9 @@ public class WorldController {
     private SensorAdapter sensorAdapter;
     private PixelWalker game;
     private HashSet<Pixel> pixels = new HashSet<Pixel>();
-    private int steps = 0;
+
+    private Player player;
+
     public static final String TAG = WorldController.class.getSimpleName();
 
     private float worldTime = 0f;
@@ -35,6 +38,7 @@ public class WorldController {
     public WorldController(PixelWalker game) {
         this.game = game;
         this.sensorAdapter = game.getSensorAdapter();
+        this.player = new Player();
 
         /**
          * Init sensor data hash map with empty arrays with the size of the sensor data array length.
@@ -59,11 +63,10 @@ public class WorldController {
             }
             float deltaSteps = newSteps - currentSteps;
             if(deltaSteps > 0) {
-                steps = steps+1;
+                player.takeStep();
             }
-
             sensorData.put(SensorType.STEP_COUNTER, new float[] {newSteps});
-            Utils.log(TAG, "Counted steps are: " + steps);
+            Utils.log(TAG, "Counted steps are: " + player.getSteps());
         }
         else {
             Utils.log(TAG, "Data from sensor adapter was not present. (was null) ");
@@ -80,7 +83,8 @@ public class WorldController {
         return pixels;
     }
 
-    public float getSteps() {
-        return steps;
+
+    public Player getPlayer() {
+        return player;
     }
 }

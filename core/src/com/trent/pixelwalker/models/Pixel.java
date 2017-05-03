@@ -2,12 +2,13 @@ package com.trent.pixelwalker.models;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 
 /**
  * Created by Sinthu on 4/29/2017.
  */
 
-public class Pixel {
+public class Pixel extends Actor {
 
     // ---------------------------------------------------------------------------------------------
     // MEMBERS & FIELDS
